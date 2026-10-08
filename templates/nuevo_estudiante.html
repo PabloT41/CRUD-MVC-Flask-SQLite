@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Estudiante</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Registrar nuevo estudiante</h1>
+
+        <p class="subtitulo">
+             Ingresa los datos del nuevo estudiante
+        </p>
+
+        <form method="POST">
+
+            <label>Nombre:</label>
+            <input type="text"
+                   name="nombre"
+                   required>
+
+            <label>Correo:</label>
+            <input type="email"
+                   name="correo"
+                   required>
+
+            <label>Carrera:</label>
+            <input type="text"
+                   name="carrera"
+                   required>
+
+            <button type="submit">
+                Guardar estudiante
+            </button>
+
+            <a class="boton cancelar"
+                href="{{ url_for('estudiantes.listar') }}">
+                    Cancelar
+            </a>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

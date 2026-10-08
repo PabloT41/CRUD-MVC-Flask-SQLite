@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Estudiante</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Editar estudiante</h1> 
+
+        <p class="subtitulo">
+            Actualiza la información del estudiante
+        </p>
+
+        <form method="POST">
+
+            <label>Nombre:</label>
+            <input type="text"
+                   name="nombre"
+                   value="{{ estudiante['nombre'] }}"
+                   required>
+
+            <label>Correo:</label>
+            <input type="email"
+                   name="correo"
+                   value="{{ estudiante['correo'] }}"
+                   required>
+
+            <label>Carrera:</label>
+            <input type="text"
+                   name="carrera"
+                   value="{{ estudiante['carrera'] }}"
+                   required>
+
+            <button type="submit">
+                Guardar cambios
+            </button>
+
+            <a class="boton cancelar"
+                href="{{ url_for('estudiantes.listar') }}">
+                    Cancelar
+            </a>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

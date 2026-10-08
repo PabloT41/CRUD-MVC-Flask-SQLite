@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="login-body">
+
+    <div class="login-principal">
+
+        <!-- LADO IZQUIERDO -->
+        <div class="login-presentacion">
+
+            <h1>
+                SISTEMA DE<br>
+                GESTIÓN DE<br>
+                ESTUDIANTES
+            </h1>
+
+            <p>
+                Administración académica de forma
+                sencilla y organizada.
+            </p>
+
+        </div>
+
+
+        <!-- LADO DERECHO -->
+        <div class="login-formulario">
+
+            <div class="login-caja">
+
+                <h2>Iniciar sesión</h2>
+
+                <p class="login-descripcion">
+                    Ingresa tus credenciales para continuar
+                </p>
+
+
+                <!-- MENSAJE DE ERROR -->
+                {% if error %}
+
+                    <div class="mensaje-error">
+                        {{ error }}
+                    </div>
+
+                {% endif %}
+
+
+                <!-- FORMULARIO -->
+                <form method="POST">
+
+                    <!-- USUARIO -->
+                    <div class="campo-login">
+
+                        <label for="usuario">
+                            Usuario
+                        </label>
+
+                        <input
+                            type="text"
+                            id="usuario"
+                            name="usuario"
+                            placeholder="Ingresa tu usuario"
+                            autocomplete="username"
+                            required>
+
+                    </div>
+
+
+                    <!-- CONTRASEÑA -->
+                    <div class="campo-login">
+
+                        <label for="password">
+                            Contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Ingresa tu contraseña"
+                            autocomplete="current-password"
+                            required>
+
+                    </div>
+
+
+                    <!-- BOTÓN -->
+                    <button
+                        class="boton-login"
+                        type="submit">
+
+                        Ingresar
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

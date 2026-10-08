@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Estudiantes</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <!-- Título -->
+        <h1>Gestión de Estudiantes</h1>
+
+        <p class="subtitulo">
+            Administración y registro de estudiantes
+        </p>
+
+
+        <!-- Botón nuevo estudiante -->
+        <a class="boton"
+           href="{{ url_for('estudiantes.nuevo') }}">
+            + Nuevo estudiante
+        </a>
+
+
+        <!-- Tabla de estudiantes -->
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Carrera</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for estudiante in estudiantes %}
+
+                <tr>
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+                    <td>
+                        {{ estudiante['nombre'] }}
+                    </td>
+
+                    <td>
+                        {{ estudiante['correo'] }}
+                    </td>
+
+                    <td>
+                        {{ estudiante['carrera'] }}
+                    </td>
+
+                    <td>
+
+                        <div class="acciones">
+
+                            <!-- EDITAR -->
+
+                            <a class="boton editar"
+                               href="{{ url_for(
+                                   'estudiantes.editar',
+                                   id=estudiante['id']
+                               ) }}">
+                                Editar
+                            </a>
+
+
+                            <!-- ELIMINAR -->
+
+                            <form
+                                action="{{ url_for(
+                                    'estudiantes.eliminar',
+                                    id=estudiante['id']
+                                ) }}"
+                                method="POST">
+
+                                <button
+                                    class="eliminar"
+                                    type="submit"
+                                    onclick="return confirm(
+                                        '¿Está seguro de eliminar este estudiante?'
+                                    );">
+                                    Eliminar
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="5">
+                        No existen estudiantes registrados.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+        <!-- Cerrar sesión -->
+
+        <a class="boton cerrar"
+           href="{{ url_for('auth.logout') }}">
+            Cerrar sesión
+        </a>
+
+    </div>
+
+</body>
+
+</html>
